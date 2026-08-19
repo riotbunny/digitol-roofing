@@ -2,13 +2,20 @@
 import { HeaderHUD } from './components/layout/HeaderHUD';
 import { HeroSection } from './components/sections/HeroSection';
 import { LiveTelemetryMetrics } from './components/sections/LiveTelemetryMetrics';
+import { TerritoryChecker } from './components/sections/TerritoryChecker';
+import { ComparisonMatrix } from './components/sections/ComparisonMatrix';
 import { ServicesBentoGrid } from './components/sections/ServicesBentoGrid';
+import { JobGallery } from './components/sections/JobGallery';
 import { ROASSimulator } from './components/sections/ROASSimulator';
+import { LiveCallDemo } from './components/sections/LiveCallDemo';
 import { AutomationPipeline } from './components/sections/AutomationPipeline';
 import { CaseStudyVault } from './components/sections/CaseStudyVault';
-import { AuditModal } from './components/sections/AuditModal';
+import { GuaranteeBanner } from './components/sections/GuaranteeBanner';
+import { FAQSection } from './components/sections/FAQSection';
 import { Footer } from './components/layout/Footer';
 import { MobileStickyBar } from './components/layout/MobileStickyBar';
+import { LiveSocialProof } from './components/ui/LiveSocialProof';
+import { AuditModal } from './components/sections/AuditModal';
 import { NoiseOverlay } from './components/ui/NoiseOverlay';
 
 export function App() {
@@ -31,47 +38,78 @@ export function App() {
 
   return (
     <div className="relative min-h-screen bg-void-950 text-slate-100 selection:bg-neon-cyan/30 selection:text-neon-cyan font-sans pb-20 md:pb-0">
-      {/* Subtle GPU Noise Grain */}
+      {/* GPU Tactical Noise Grain */}
       <NoiseOverlay />
 
       {/* Floating Tactical Header HUD */}
       <HeaderHUD onOpenAudit={() => handleOpenAudit()} />
 
-      {/* Main Roofer Experience */}
+      {/* Main Roofer High-Conversion Journey */}
       <main>
-        {/* Hero with Luxury Roof Image + Canvas physics + Roofer Typewriter */}
+        {/* 1. Hero with Luxury Roof Image + Interactive Canvas + Roofer Typewriter */}
         <HeroSection 
           onOpenAudit={() => handleOpenAudit()} 
           onOpenSimulator={scrollToCalculator}
         />
 
-        {/* Live Odometer Metrics (Signed contracts, avg ticket, speed-to-lead) */}
+        {/* 2. Live Odometer Metrics (Signed contracts, avg ticket, speed-to-lead) */}
         <LiveTelemetryMetrics />
 
-        {/* Asymmetrical Bento Grid for Roofing Ad Services */}
+        {/* 3. Interactive City / Territory Availability Checker Tool */}
+        <TerritoryChecker 
+          onClaimTerritory={(territoryData) => handleOpenAudit(territoryData)}
+        />
+
+        {/* 4. The "Angi / Shared Leads vs. Digitol Exclusive System" Comparison Matrix */}
+        <ComparisonMatrix 
+          onOpenAudit={() => handleOpenAudit()}
+        />
+
+        {/* 5. Services Bento Grid (Google Search, Facebook Ads, Speed to Lead, Drone Media, Websites) */}
         <ServicesBentoGrid 
           onSelectService={(serviceName) => handleOpenAudit({ service: serviceName })}
         />
 
-        {/* Interactive Roof Jobs & Revenue Calculator */}
+        {/* 6. Real Roofing Financials & Job Gallery (Shingles, Crew, Metal, Commercial TPO) */}
+        <JobGallery 
+          onOpenAudit={() => handleOpenAudit()}
+        />
+
+        {/* 7. Interactive Roof Jobs & Revenue Calculator */}
         <ROASSimulator 
           onLockInTarget={(targetData) => handleOpenAudit(targetData)}
         />
 
-        {/* 4-Step Roofing Engine & Live Lead Simulation */}
+        {/* 8. Live 45-Second SMS & Phone Call Bridge Interactive Demo */}
+        <LiveCallDemo />
+
+        {/* 9. 4-Step Roofing Engine & Live Lead Simulation Sandbox */}
         <AutomationPipeline />
 
-        {/* Real Roofing Contractor Case Studies (Austin, Denver, Dallas) */}
+        {/* 10. Real Contractor Case Studies (Austin, Denver, Dallas) */}
         <CaseStudyVault 
+          onOpenAudit={() => handleOpenAudit()}
+        />
+
+        {/* 11. 30-Day Pay-On-Performance / 5-Job Guarantee Banner */}
+        <GuaranteeBanner 
+          onOpenAudit={() => handleOpenAudit()}
+        />
+
+        {/* 12. Frequently Asked Questions (FAQ) Accordion */}
+        <FAQSection 
           onOpenAudit={() => handleOpenAudit()}
         />
       </main>
 
-      {/* Roofer Obsidian Footer */}
+      {/* High-Contrast Obsidian Footer */}
       <Footer onOpenAudit={() => handleOpenAudit()} />
 
-      {/* Mobile-Only Sticky Action Bar */}
+      {/* Mobile Sticky Action Bar */}
       <MobileStickyBar onOpenAudit={() => handleOpenAudit()} />
+
+      {/* Floating Live Activity Social Proof */}
+      <LiveSocialProof />
 
       {/* Free Video Audit & Territory Claim Modal */}
       <AuditModal 
