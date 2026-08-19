@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-void: #06080F;
+    --color-cyan: #00F2FE;
+    --color-emerald: #05FFA1;
+    --color-purple: #A855F7;
+  }
+
+  html {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    background-color: #030509;
+    color: #F8FAFC;
+    color-scheme: dark;
+  }
+
+  /* Custom high-tactile scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #06080F;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1E293B;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00F2FE;
+  }
+}
+
+@layer utilities {
+  /* Cyber grid background */
+  .bg-cyber-grid {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  }
+
+  .bg-cyber-grid-dense {
+    background-size: 20px 20px;
+    background-image: 
+      linear-gradient(to right, rgba(0, 242, 254, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 242, 254, 0.05) 1px, transparent 1px);
+  }
+
+  .bg-cyber-dots {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Tactical glass cards */
+  .glass-panel {
+    background: rgba(13, 19, 34, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-panel-interactive {
+    background: rgba(13, 19, 34, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .glass-panel-interactive:hover {
+    background: rgba(18, 26, 46, 0.8);
+    border-color: rgba(0, 242, 254, 0.3);
+    box-shadow: 0 10px 30px -10px rgba(0, 242, 254, 0.15);
+  }
+
+  /* Scanline overlay */
+  .scanline-overlay {
+    position: relative;
+  }
+  .scanline-overlay::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+    background-size: 100% 4px;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0.4;
+  }
+
+  /* Glow filters */
+  .glow-cyan {
+    filter: drop-shadow(0 0 12px rgba(0, 242, 254, 0.6));
+  }
+  .glow-emerald {
+    filter: drop-shadow(0 0 12px rgba(5, 255, 161, 0.6));
+  }
+  .glow-purple {
+    filter: drop-shadow(0 0 12px rgba(168, 85, 247, 0.6));
+  }
+
+  /* Text gradient helpers */
+  .text-gradient-cyan {
+    background: linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 40%, #00F2FE 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-emerald {
+    background: linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 40%, #05FFA1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-purple {
+    background: linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 40%, #A855F7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
