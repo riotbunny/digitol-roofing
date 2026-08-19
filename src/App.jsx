@@ -1,6 +1,7 @@
 ﻿import React, { useState } from 'react';
 import { HeaderHUD } from './components/layout/HeaderHUD';
 import { HeroSection } from './components/sections/HeroSection';
+import { RoofingTrustBar } from './components/ui/RoofingTrustBar';
 import { LiveTelemetryMetrics } from './components/sections/LiveTelemetryMetrics';
 import { TerritoryChecker } from './components/sections/TerritoryChecker';
 import { ComparisonMatrix } from './components/sections/ComparisonMatrix';
@@ -37,7 +38,7 @@ export function App() {
   };
 
   return (
-    <div className="relative min-h-screen bg-void-950 text-slate-100 selection:bg-neon-cyan/30 selection:text-neon-cyan font-sans pb-20 md:pb-0">
+    <div className="relative min-h-screen bg-void-950 text-slate-100 selection:bg-amber-400/30 selection:text-amber-400 font-sans pb-20 md:pb-0">
       {/* GPU Tactical Noise Grain */}
       <NoiseOverlay />
 
@@ -52,51 +53,54 @@ export function App() {
           onOpenSimulator={scrollToCalculator}
         />
 
-        {/* 2. Live Odometer Metrics (Signed contracts, avg ticket, speed-to-lead) */}
+        {/* 2. Roofing Industry & Manufacturer Trust Badges Bar */}
+        <RoofingTrustBar />
+
+        {/* 3. Live Odometer Metrics (Signed contracts, avg ticket, speed-to-lead) */}
         <LiveTelemetryMetrics />
 
-        {/* 3. Interactive City / Territory Availability Checker Tool */}
+        {/* 4. Interactive City / Territory Availability Checker Tool */}
         <TerritoryChecker 
           onClaimTerritory={(territoryData) => handleOpenAudit(territoryData)}
         />
 
-        {/* 4. The "Angi / Shared Leads vs. Digitol Exclusive System" Comparison Matrix */}
+        {/* 5. The "Angi / Shared Leads vs. Digitol Exclusive System" Comparison Matrix */}
         <ComparisonMatrix 
           onOpenAudit={() => handleOpenAudit()}
         />
 
-        {/* 5. Services Bento Grid (Google Search, Facebook Ads, Speed to Lead, Drone Media, Websites) */}
+        {/* 6. Services Bento Grid (Google Search, Facebook Ads, Speed to Lead, Drone Media, Websites) */}
         <ServicesBentoGrid 
           onSelectService={(serviceName) => handleOpenAudit({ service: serviceName })}
         />
 
-        {/* 6. Real Roofing Financials & Job Gallery (Shingles, Crew, Metal, Commercial TPO) */}
+        {/* 7. Real Roofing Financials & Job Gallery (Shingles, Crew, Metal, Commercial TPO) */}
         <JobGallery 
           onOpenAudit={() => handleOpenAudit()}
         />
 
-        {/* 7. Interactive Roof Jobs & Revenue Calculator */}
+        {/* 8. Interactive Roof Jobs & Revenue Calculator */}
         <ROASSimulator 
           onLockInTarget={(targetData) => handleOpenAudit(targetData)}
         />
 
-        {/* 8. Live 45-Second SMS & Phone Call Bridge Interactive Demo */}
+        {/* 9. Live 45-Second SMS & Phone Call Bridge Interactive Demo */}
         <LiveCallDemo />
 
-        {/* 9. 4-Step Roofing Engine & Live Lead Simulation Sandbox */}
+        {/* 10. 4-Step Roofing Engine & Live Lead Simulation Sandbox */}
         <AutomationPipeline />
 
-        {/* 10. Real Contractor Case Studies (Austin, Denver, Dallas) */}
+        {/* 11. Real Contractor Case Studies (Austin, Denver, Dallas) */}
         <CaseStudyVault 
           onOpenAudit={() => handleOpenAudit()}
         />
 
-        {/* 11. 30-Day Pay-On-Performance / 5-Job Guarantee Banner */}
+        {/* 12. 30-Day Pay-On-Performance / 5-Job Guarantee Banner */}
         <GuaranteeBanner 
           onOpenAudit={() => handleOpenAudit()}
         />
 
-        {/* 12. Frequently Asked Questions (FAQ) Accordion */}
+        {/* 13. Frequently Asked Questions (FAQ) Accordion */}
         <FAQSection 
           onOpenAudit={() => handleOpenAudit()}
         />

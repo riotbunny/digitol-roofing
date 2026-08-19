@@ -1,6 +1,5 @@
 ﻿import React, { useState, useEffect } from 'react';
 import { MagneticButton } from '../ui/MagneticButton';
-import { BadgeHUD } from '../ui/BadgeHUD';
 import { PhoneCall, ShieldCheck, ArrowUpRight, Menu, X, Hammer } from 'lucide-react';
 
 export function HeaderHUD({ onOpenAudit }) {
@@ -17,9 +16,10 @@ export function HeaderHUD({ onOpenAudit }) {
 
   const navLinks = [
     { label: 'SERVICES', href: '#services' },
-    { label: 'JOB CALCULATOR', href: '#calculator' },
+    { label: 'CALCULATOR', href: '#calculator' },
     { label: 'HOW IT WORKS', href: '#how-it-works' },
     { label: 'ROOFER RESULTS', href: '#case-studies' },
+    { label: 'FAQ', href: '#faq' },
   ];
 
   return (
@@ -29,51 +29,51 @@ export function HeaderHUD({ onOpenAudit }) {
           flex items-center justify-between px-5 py-3 rounded-2xl
           transition-all duration-300 border
           ${scrolled
-            ? 'glass-panel bg-void-900/90 shadow-2xl border-white/15' 
-            : 'bg-void-900/50 backdrop-blur-md border-white/10'}
+            ? 'glass-panel bg-void-900/95 shadow-2xl border-white/15' 
+            : 'bg-void-900/70 backdrop-blur-md border-white/10'}
         `}>
           {/* Logo & Identity */}
           <a href="#" className="flex items-center gap-3 group">
-            <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-void-950 border border-white/20 group-hover:border-neon-cyan transition-colors overflow-hidden">
-              <div className="absolute inset-0 bg-[conic-gradient(from_0deg,transparent_0_340deg,rgba(0,242,254,0.4)_360deg)] animate-radar opacity-70" />
-              <Hammer className="w-5 h-5 text-neon-cyan relative z-10 transition-transform group-hover:scale-110" />
+            <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 border border-amber-400/50 shadow-md text-void-950 flex-shrink-0 group-hover:scale-105 transition-transform">
+              <Hammer className="w-5 h-5 font-black text-void-950 fill-void-950" />
             </div>
             
             <div className="flex flex-col">
               <div className="flex items-center gap-1.5">
                 <span className="font-mono text-lg font-black tracking-wider text-white">DIGITOL</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-neon-cyan animate-pulse" />
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
               </div>
-              <span className="text-[9px] font-mono tracking-widest text-slate-400 uppercase -mt-0.5">
+              <span className="text-[9px] font-mono tracking-widest text-amber-400 font-bold uppercase -mt-0.5">
                 ROOFING LEAD &amp; AD ENGINE
               </span>
             </div>
           </a>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden md:flex items-center gap-1 lg:gap-2 px-3 py-1.5 rounded-xl bg-void-950/70 border border-white/5 font-mono text-xs">
+          <nav className="hidden md:flex items-center gap-1 lg:gap-2 px-3 py-1.5 rounded-xl bg-void-950/80 border border-white/5 font-mono text-xs">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="px-3.5 py-1.5 rounded-lg text-slate-300 hover:text-neon-cyan hover:bg-white/5 transition-all duration-200"
+                className="px-3.5 py-1.5 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-white/5 transition-all duration-200"
               >
                 {link.label}
               </a>
             ))}
           </nav>
 
-          {/* Exclusive Territory & CTA */}
+          {/* Phone Call & Exclusive Territory Pill */}
           <div className="hidden lg:flex items-center gap-3">
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-void-950/80 border border-white/10 text-[11px] font-mono text-slate-300">
-              <span className="w-2 h-2 rounded-full bg-neon-emerald animate-ping" />
-              <span className="text-neon-emerald font-semibold">EXCLUSIVE TERRITORIES</span>
-              <span className="text-slate-500">|</span>
-              <span className="text-slate-400">1 ROOFER / CITY</span>
-            </div>
+            <a
+              href="tel:5558397663"
+              className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-void-950/80 border border-white/10 text-[11px] font-mono text-slate-300 hover:border-amber-400/40 transition-colors"
+            >
+              <PhoneCall className="w-3.5 h-3.5 text-amber-400" />
+              <span className="text-white font-bold">(555) 839-ROOF</span>
+            </a>
 
             <MagneticButton
-              variant="cyan"
+              variant="amber"
               size="sm"
               onClick={onOpenAudit}
               icon={ArrowUpRight}
@@ -86,10 +86,10 @@ export function HeaderHUD({ onOpenAudit }) {
           {/* Mobile Menu Button */}
           <div className="flex items-center gap-2 md:hidden">
             <MagneticButton
-              variant="cyan"
+              variant="amber"
               size="sm"
               onClick={onOpenAudit}
-              className="px-3 py-1.5 text-xs"
+              className="px-3 py-1.5 text-xs font-bold"
             >
               FREE AUDIT
             </MagneticButton>
@@ -112,14 +112,21 @@ export function HeaderHUD({ onOpenAudit }) {
                   key={link.label}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="px-3 py-2.5 rounded-lg text-slate-300 hover:text-neon-cyan hover:bg-white/5 transition-colors"
+                  className="px-3 py-2.5 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-white/5 transition-colors"
                 >
                   {link.label}
                 </a>
               ))}
-              <div className="pt-3 border-t border-white/10 mt-2">
+              <div className="pt-3 border-t border-white/10 mt-2 space-y-2">
+                <a
+                  href="tel:5558397663"
+                  className="w-full py-2.5 px-4 rounded-xl bg-void-950 border border-white/15 text-white font-mono text-xs font-bold flex items-center justify-center gap-2"
+                >
+                  <PhoneCall className="w-3.5 h-3.5 text-amber-400" />
+                  <span>CALL (555) 839-ROOF</span>
+                </a>
                 <MagneticButton
-                  variant="cyan"
+                  variant="amber"
                   size="md"
                   onClick={() => {
                     setMobileMenuOpen(false);
